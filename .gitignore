@@ -1,0 +1,12 @@
+.idea
+build
+install
+tmp
+log
+
+src/*/cmake-build-debug/
+src/**/__pycache__/
+
+src/**/log/
+src/**/build/
+src/**/install/
