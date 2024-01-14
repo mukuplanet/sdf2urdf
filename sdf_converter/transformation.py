@@ -29,16 +29,16 @@ def compute_relative_transformation(rot_parent, d_parent, rot_child, d_child):
 
     translation = H_relative[:3, -1]
     rotation_mat = H_relative[:3, :3]
-    rotation = R.from_matrix(rotation_mat).as_euler("zyx", degrees=False)
+    rotation = R.from_matrix(rotation_mat).as_euler("xyz", degrees=False)
     return translation, rotation
 
 
 def compute_relative_pose(parent_link: Link, child_link: Link):
     parent_pose = parent_link.pose if parent_link.pose is not None else Pose.default()
     child_pose = child_link.pose if child_link.pose is not None else Pose.default()
-    rot_parent = R.from_euler("zyx", parent_pose.get_rpy(), degrees=False).as_matrix()
+    rot_parent = R.from_euler("xyz", parent_pose.get_rpy(), degrees=False).as_matrix()
     d_parent = parent_pose.get_translation()
-    rot_child = R.from_euler("zyx", child_pose.get_rpy(), degrees=False).as_matrix()
+    rot_child = R.from_euler("xyz", child_pose.get_rpy(), degrees=False).as_matrix()
     d_child = child_pose.get_translation()
     translation, rotation = compute_relative_transformation(rot_parent, d_parent, rot_child, d_child)
     return Pose.from_vec(translation, rotation)

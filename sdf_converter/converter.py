@@ -45,8 +45,8 @@ def main(input_file, model_dir, output_file):
 
 
     BEGIN = f"""\
-    <?xml version="1.0"?>
-    <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="{robot_name}">
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="{robot_name}">
     """
 
     END = "</robot>"
